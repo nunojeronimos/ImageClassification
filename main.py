@@ -94,19 +94,5 @@ for batch in test.as_numpy_iterator():
     re.update_state(y, yhat)
     acc.update_state(y, yhat)
 
-#print(f'Precision:{pre.result().numpy()}, Recall:{re.result().numpy()}, Accuracy:{acc.result().numpy()}')
-
-#testing the model
-'''img = cv2.imread('test.jpg')
-resize = tf.image.resize(img,(256, 256))
-plt.imshow(resize.numpy().astype(int))
-plt.show()
-yhat = model.predict(np.expand_dims(resize/255, 0))
-print(yhat)
-if yhat > 0.5:
-    print(f'Is a dog')
-else:
-    print(f'Not is a dog')'''
-
 model.save(os.path.join('models','dogidentifier.h5'))
 new_model = load_model(os.path.join('models','dogidentifier.h5'))
